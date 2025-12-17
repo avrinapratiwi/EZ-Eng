@@ -42,83 +42,78 @@
 <!--======================================
         START HEADER AREA
     ======================================-->
-<header class="header-menu-area">
-    <div class="header-menu-content dashboard-menu-content pr-30px pl-30px bg-white shadow-sm">
-        <div class="container-fluid">
-            <div class="main-menu-content">
-                <div class="row align-items-center">
-                    <div class="col-lg-12">
-                        <div class="logo-box logo--box">
-                            <div class="user-btn-action">
-                                <div class="search-menu-toggle icon-element icon-element-sm shadow-sm mr-2" data-toggle="tooltip" data-placement="top" title="Search">
-                                    <i class="la la-search"></i>
-                                </div>
-                            </div>
-                        </div><!-- end logo-box -->
-                        <div class="menu-wrapper">
-                            <div class="nav-right-button d-flex align-items-center">
-                                <div class="user-action-wrap d-flex align-items-center">
-                                    <div class="shop-cart user-profile-cart">
-                                        <ul>
-                                            <li>
-                                                <div class="shop-cart-btn">
-                                                    <div class="avatar-xs">
-                                                        <img class="rounded-full"
-                                                        src="{{ $user->photo ? asset($user->photo) : asset('images/user.png') }}"
-                                                        alt="Student thumbnail image"
-                                                            style="width:100%; height:100%; object-fit:cover;">
-                                                    </div>
-                                                    <span class="dot-status bg-success"></span>
-                                                </div>
-                                                <ul class="cart-dropdown-menu after-none p-0 notification-dropdown-menu">
-                                                    <li class="menu-heading-block d-flex align-items-center">
-                                                        <a href="" class="avatar-sm flex-shrink-0 d-block">
+    <header class="header-menu-area">
+        <div class="header-menu-content dashboard-menu-content pr-30px pl-30px bg-white shadow-sm">
+            <div class="container-fluid">
+                <div class="main-menu-content">
+                    <div class="row align-items-center">
+                        <div class="col-lg-12">
+                            <div class="logo-box logo--box">
+                                <div class="user-btn-action">
+                                </div>                            
+                            </div><!-- end logo-box -->
+                            <div class="menu-wrapper">                                                      
+                                <div class="nav-right-button d-flex align-items-center">
+                                    <div class="user-action-wrap d-flex align-items-center">
+                                        <div class="shop-cart user-profile-cart">
+                                            <ul>
+                                                <li>
+                                                    <div class="shop-cart-btn">
+                                                        <div class="avatar-xs">
                                                             <img class="rounded-full"
                                                             src="{{ $user->photo ? asset($user->photo) : asset('images/user.png') }}"
                                                             alt="Student thumbnail image"
-                                                            style="width:100%; height:100%; object-fit:cover;">
-                                                        </a>
-                                                        <div class="ml-2">
-                                                            <p class="text-black">{{ ($user->first_name ?? '') . ' ' . ($user->last_name ?? '') }}</p>
-                                                            <span class="d-block fs-14 lh-20">{{ $user->email ?? '' }}</span>
+                                                            style="width:100%; height:100%; object-fit:cover;">                                                    </div>
+                                                            <span class="dot-status bg-success"></span>
                                                         </div>
-                                                    </li>
-                                                    <li>
-                                                        <ul class="generic-list-item">
-                                                            <li>
-                                                                <a href="" data-toggle="modal" data-target="#logoutModal">
-                                                                    <i class="la la-power-off mr-1"></i> Logout
-                                                                </a>                                                                
-                                                            </li>
-                                                        </ul>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </div><!-- end shop-cart -->
-                                </div>
-                            </div><!-- end nav-right-button -->
-                        </div><!-- end menu-wrapper -->
-                    </div><!-- end col-lg-10 -->
-                </div><!-- end row -->
-            </div>
-        </div><!-- end container-fluid -->
-    </div><!-- end header-menu-content -->
-    <div class="mobile-search-form">
-        <div class="d-flex align-items-center">
-            <form method="post" class="flex-grow-1 mr-3">
-                <div class="form-group mb-0">
-                    <input class="form-control form--control pl-3" type="text" name="search" placeholder="Search for anything">
-                    <span class="la la-search search-icon"></span>
+                                                    <ul class="cart-dropdown-menu after-none p-0 notification-dropdown-menu">
+                                                        <li class="menu-heading-block d-flex align-items-center">
+                                                            <a href="{{ route('profile-learner') }}" class="avatar-sm flex-shrink-0 d-block">
+                                                                <img class="rounded-full"
+                                                                src="{{ $user->photo ? asset($user->photo) : asset('images/user.png') }}"
+                                                                alt="Student thumbnail image"
+                                                                style="width:100%; height:100%; object-fit:cover;">                                                        </a>
+                                                            <div class="ml-2">
+                                                                <p class="text-black">{{ ($user->first_name ?? '') . ' ' . ($user->last_name ?? '') }}</p>
+                                                                <span class="d-block fs-14 lh-20">{{ $user->email ?? '' }}</span>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <ul class="generic-list-item">
+                                                                <li>
+                                                                    <a href="#" data-toggle="modal" data-target="#logoutModal">
+                                                                        <i class="la la-power-off mr-1"></i> Logout
+                                                                    </a>                                                                
+                                                                </li>
+                                                            </ul>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </div><!-- end shop-cart -->
+                                    </div>
+                                </div><!-- end nav-right-button -->
+                            </div><!-- end menu-wrapper -->
+                        </div><!-- end col-lg-10 -->
+                    </div><!-- end row -->
                 </div>
-            </form>
-            <div class="search-bar-close icon-element icon-element-sm shadow-sm">
-                <i class="la la-times"></i>
-            </div><!-- end off-canvas-menu-close -->
-        </div>
-    </div><!-- end mobile-search-form -->
-    <div class="body-overlay"></div>
-</header><!-- end header-menu-area -->
+            </div><!-- end container-fluid -->
+        </div><!-- end header-menu-content -->
+        <div class="mobile-search-form">
+            <div class="d-flex align-items-center">
+                <form method="post" class="flex-grow-1 mr-3">
+                    <div class="form-group mb-0">
+                        <input class="form-control form--control pl-3" type="text" name="search" placeholder="Search for anything">
+                        <span class="la la-search search-icon"></span>
+                    </div>
+                </form>
+                <div class="search-bar-close icon-element icon-element-sm shadow-sm">
+                    <i class="la la-times"></i>
+                </div><!-- end off-canvas-menu-close -->
+            </div>
+        </div><!-- end mobile-search-form -->
+        <div class="body-overlay"></div>
+    </header>
 <!--======================================
         END HEADER AREA
 ======================================-->
