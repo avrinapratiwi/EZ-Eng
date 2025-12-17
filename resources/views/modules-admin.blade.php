@@ -383,8 +383,8 @@
                             <label>Image</label>
                             <input type="file" name="image" class="form-control-file">
                             @if($module->image)
-                                <img src="{{ $module->image ? asset($module->image) : asset('images/default.png') }}" 
-                                    alt="Module Image" 
+                            <img src="{{ $module->image ? asset($module->image) : asset('images/default.png') }}" 
+                            alt="Module Image"
                                     style="width:100px; height:100px; object-fit:cover; margin-top:10px;">
                             @endif
                             <small class="text-muted">Upload to replace existing image (Max 5MB – JPG/PNG)</small>

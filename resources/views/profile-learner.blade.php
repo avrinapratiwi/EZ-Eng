@@ -74,7 +74,7 @@
                                                     <li class="menu-heading-block d-flex align-items-center">
                                                         <a href="" class="avatar-sm flex-shrink-0 d-block">
                                                             <img class="rounded-full"
-                                                            src="{{ $user->photo ? asset($user->photo) : asset('images/user.png') }}"
+                                                            src="{{ $user->photo ? asset($user->photo) : asset('images/user.png') }}"
                                                             alt="Student thumbnail image"
                                                             style="width:100%; height:100%; object-fit:cover;">
                                                         </a>
