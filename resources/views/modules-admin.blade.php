@@ -388,7 +388,7 @@
                             style="width:100px; height:100px; object-fit:cover; margin-top:10px;">                       
                             @endif
                             <small class="text-muted">Upload to replace existing image (Max 5MB – JPG/PNG)</small>
-                        </div>
+                        </div>\
                     </div>
                     <div class="modal-footer">
                         <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
