@@ -383,12 +383,12 @@
                             <label>Image</label>
                             <input type="file" name="image" class="form-control-file">
                             @if($module->image)
-                            <img src="{{ $module->image ?? asset('images/default.png') }}" 
-                            alt="Module Image"
-                            style="width:100px; height:100px; object-fit:cover; margin-top:10px;">                       
+                            <img src="{{ $module->image ? asset($module->image) : asset('images/default.png') }}" 
+                                alt="Module Image" 
+                                style="width:60px; height:60px; object-fit:cover; border-radius:5px;">
                             @endif
                             <small class="text-muted">Upload to replace existing image (Max 5MB – JPG/PNG)</small>
-                        </div>\
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
