@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Facades\Storage;
 
 class ProfileController extends Controller
 {
@@ -36,8 +35,8 @@ class ProfileController extends Controller
 
         // Jika user ingin menghapus foto
         if ($request->has('delete_photo') && $request->delete_photo == 1) {
-            if ($dbUser->photo && Storage::disk('public')->exists($dbUser->photo)) {
-                Storage::disk('public')->delete($dbUser->photo);
+            if ($dbUser->photo && file_exists(public_path('storage/photos/' . $dbUser->photo))) {
+                unlink(public_path('storage/photos/' . $dbUser->photo));
             }
             $dbUser->photo = null; // set kolom foto menjadi null
         }
@@ -45,13 +44,19 @@ class ProfileController extends Controller
         // Jika upload foto baru
         if ($request->hasFile('photo')) {
             // Hapus foto lama jika ada
-            if ($dbUser->photo && Storage::disk('public')->exists($dbUser->photo)) {
-                Storage::disk('public')->delete($dbUser->photo);
+            if ($dbUser->photo && file_exists(public_path('storage/photos/' . $dbUser->photo))) {
+                unlink(public_path('storage/photos/' . $dbUser->photo));
             }
 
-            // Upload foto baru
-            $photoPath = $request->file('photo')->store('photos', 'public');
-            $dbUser->photo = $photoPath;
+            // Ambil file
+            $file = $request->file('photo');
+            // Buat nama unik
+            $filename = time() . '_' . $file->getClientOriginalName();
+            // Pindahkan ke public/storage/photos
+            $file->move(public_path('storage/photos'), $filename);
+
+            // Simpan nama file ke DB
+            $dbUser->photo = $filename;
         }
 
         // Update informasi user
@@ -72,8 +77,4 @@ class ProfileController extends Controller
 
         return back()->with('success', 'Profile updated successfully!');
     }
-
-
-
-
 }
