@@ -206,14 +206,12 @@
                                 <div class="conversation-item {{ $isMine ? 'message-sent' : 'message-received' }} mb-3">
                                     <div class="media align-items-start {{ $isMine ? 'flex-row-reverse text-right' : '' }}">
                             
-                                        {{-- AVATAR --}}
                                         <div class="avatar-sm flex-shrink-0 {{ $isMine ? 'ml-3' : 'mr-3' }}">
                                             <img class="rounded-full img-fluid"
-                                            src="{{ $msg->user->photo ? asset('storage/'.$msg->user->photo) : asset('images/user.png') }}"
-                                            style="width:40px;height:40px;">
-                                       
+                                                 src="{{ $msg->user->photo ? asset($msg->user->photo) : asset('images/user.png') }}"
+                                                 alt="{{ $msg->user->first_name ?? 'User' }}"
+                                                 style="width:40px;height:40px;">
                                         </div>
-                            
                                         <div class="media-body d-flex flex-column">
                             
                                             {{-- NAMA --}}
