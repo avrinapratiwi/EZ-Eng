@@ -383,7 +383,7 @@
                             <label>Image</label>
                             <input type="file" name="image" class="form-control-file">
                             @if($module->image)
-                                <img src="{{ asset('storage/'.$module->image) }}" 
+                                <img src="{{ $module->image ? asset($module->image) : asset('images/default.png') }}" 
                                     alt="Module Image" 
                                     style="width:100px; height:100px; object-fit:cover; margin-top:10px;">
                             @endif

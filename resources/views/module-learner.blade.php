@@ -235,12 +235,12 @@
                                                                         : '#';
                                                                 }
                                                             @endphp
-                                        
-                                                            <a href="{{ $link }}" class="d-block" style="height:100%;">
-                                                                <img src="{{ asset('storage/'.$module->image) }}"
-                                                                     alt="{{ $module->title }}"
-                                                                     style="width:100%; height:100%; object-fit:cover;">
-                                                            </a>
+                                                                <a href="{{ $link }}" class="d-block" style="height:100%;">
+                                                                    <img src="{{ $module->image ? asset($module->image) : asset('images/default.png') }}"
+                                                                        alt="{{ $module->title }}"
+                                                                        style="width:100%; height:100%; object-fit:cover;">
+                                                                </a>
+
                                                         </div>
                                         
                                                         <div class="card-body" style="flex:1; display:flex; flex-direction:column; position:relative;">
