@@ -298,15 +298,11 @@
                                                 #{{ $index + 1 }}
                                             @endif
                                         </td>
-                                        <td style="width:50px;">
                                             <td style="width:50px;">
                                                 <img src="{{ $item['learner']->photo ? asset($item['learner']->photo) : asset('images/user.png') }}"
                                                     alt="Learner Photo"
                                                     style="width:40px; height:40px; object-fit:cover; border-radius:50%;">
                                             </td>
-                                        
-                                            
-                                        </td>
                                         <td>{{ $item['learner']->first_name }} {{ $item['learner']->last_name }}</td>
                                         <td>{{ $item['progressPercentage'] }}%</td>
                                     </tr>
