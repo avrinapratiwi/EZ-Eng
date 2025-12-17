@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\File;
 
 class ProfileController extends Controller
 {
@@ -33,33 +34,46 @@ class ProfileController extends Controller
         // Ambil user dari database
         $dbUser = User::find($user->id);
 
-        // Jika user ingin menghapus foto
-        if ($request->has('delete_photo') && $request->delete_photo == 1) {
-            if ($dbUser->photo && file_exists(public_path('storage/photos/' . $dbUser->photo))) {
-                unlink(public_path('storage/photos/' . $dbUser->photo));
+        // Folder tujuan: public_html/storage/photos (secara Laravel: public/storage/photos)
+        $uploadPath = public_path('storage/photos');
+
+        // Pastikan folder ada
+        if (!File::exists($uploadPath)) {
+            File::makeDirectory($uploadPath, 0755, true);
+        }
+
+        // ======================
+        // HAPUS FOTO (jika user centang delete)
+        // ======================
+        if ($request->has('delete_photo') && (int) $request->delete_photo === 1) {
+            if ($dbUser->photo && File::exists(public_path($dbUser->photo))) {
+                File::delete(public_path($dbUser->photo));
             }
             $dbUser->photo = null; // set kolom foto menjadi null
         }
 
-        // Jika upload foto baru
+        // ======================
+        // UPLOAD FOTO BARU
+        // ======================
         if ($request->hasFile('photo')) {
             // Hapus foto lama jika ada
-            if ($dbUser->photo && file_exists(public_path('storage/photos/' . $dbUser->photo))) {
-                unlink(public_path('storage/photos/' . $dbUser->photo));
+            if ($dbUser->photo && File::exists(public_path($dbUser->photo))) {
+                File::delete(public_path($dbUser->photo));
             }
 
-            // Ambil file
             $file = $request->file('photo');
-            // Buat nama unik
-            $filename = time() . '_' . $file->getClientOriginalName();
-            // Pindahkan ke public/storage/photos
-            $file->move(public_path('storage/photos'), $filename);
+            $fileName = time() . '_' . uniqid() . '.' . $file->getClientOriginalExtension();
 
-            // Simpan nama file ke DB
-            $dbUser->photo = $filename;
+            // Pindahkan langsung ke public/storage/photos (di hosting: public_html/storage/photos)
+            $file->move($uploadPath, $fileName);
+
+            // Simpan path RELATIF agar bisa dipanggil: asset($user->photo)
+            $dbUser->photo = 'storage/photos/' . $fileName;
         }
 
+        // ======================
         // Update informasi user
+        // ======================
         $dbUser->first_name   = $request->first_name;
         $dbUser->last_name    = $request->last_name;
         $dbUser->username     = $request->username;
