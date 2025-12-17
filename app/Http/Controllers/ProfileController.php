@@ -11,14 +11,11 @@ class ProfileController extends Controller
 {
     public function updateProfile(Request $request)
     {
-        // Cek apakah user login
         $user = Session::get('user');
-
         if (!$user) {
             return redirect('/login')->with('error', 'Please login first.');
         }
 
-        // Validasi sesuai struktur tabel
         $request->validate([
             'photo'        => 'nullable|image|mimes:png,jpg,jpeg|max:2048',
             'first_name'   => 'required|string|max:255',
@@ -31,49 +28,60 @@ class ProfileController extends Controller
             'bio'          => 'nullable|string',
         ]);
 
-        // Ambil user dari database
-        $dbUser = User::find($user->id);
+        $dbUser = User::findOrFail($user->id);
 
-        // Folder tujuan: public_html/storage/photos (secara Laravel: public/storage/photos)
-        $uploadPath = public_path('storage/photos');
+        /**
+         * Paksa ke ROOT public_html, bukan public_html/public
+         * - base_path() biasanya mengarah ke folder project (mis: /home/u123/laravel)
+         * - dirname(base_path()) naik 1 folder (mis: /home/u123)
+         * - lalu masuk ke public_html
+         */
+        $publicHtml = dirname(base_path()) . '/public_html';
+        $uploadPath = $publicHtml . '/storage/photos';
 
-        // Pastikan folder ada
         if (!File::exists($uploadPath)) {
             File::makeDirectory($uploadPath, 0755, true);
         }
 
-        // ======================
-        // HAPUS FOTO (jika user centang delete)
-        // ======================
-        if ($request->has('delete_photo') && (int) $request->delete_photo === 1) {
-            if ($dbUser->photo && File::exists(public_path($dbUser->photo))) {
-                File::delete(public_path($dbUser->photo));
-            }
-            $dbUser->photo = null; // set kolom foto menjadi null
+        if (!is_writable($uploadPath)) {
+            return back()->with('error', 'Folder upload tidak writable: ' . $uploadPath);
         }
 
-        // ======================
-        // UPLOAD FOTO BARU
-        // ======================
+        // Hapus foto (checkbox)
+        if ($request->boolean('delete_photo')) {
+            if ($dbUser->photo) {
+                $oldFile = $publicHtml . '/' . ltrim($dbUser->photo, '/'); // storage/photos/xxx.jpg
+                if (File::exists($oldFile)) {
+                    File::delete($oldFile);
+                }
+            }
+            $dbUser->photo = null;
+        }
+
+        // Upload foto baru
         if ($request->hasFile('photo')) {
-            // Hapus foto lama jika ada
-            if ($dbUser->photo && File::exists(public_path($dbUser->photo))) {
-                File::delete(public_path($dbUser->photo));
+            $file = $request->file('photo');
+
+            if (!$file->isValid()) {
+                return back()->with('error', 'Upload file gagal (file tidak valid).');
             }
 
-            $file = $request->file('photo');
-            $fileName = time() . '_' . uniqid() . '.' . $file->getClientOriginalExtension();
+            // Hapus foto lama
+            if ($dbUser->photo) {
+                $oldFile = $publicHtml . '/' . ltrim($dbUser->photo, '/');
+                if (File::exists($oldFile)) {
+                    File::delete($oldFile);
+                }
+            }
 
-            // Pindahkan langsung ke public/storage/photos (di hosting: public_html/storage/photos)
+            $fileName = time() . '_' . uniqid() . '.' . $file->getClientOriginalExtension();
             $file->move($uploadPath, $fileName);
 
-            // Simpan path RELATIF agar bisa dipanggil: asset($user->photo)
+            // simpan path relatif untuk URL: https://domain.com/storage/photos/xxx.jpg
             $dbUser->photo = 'storage/photos/' . $fileName;
         }
 
-        // ======================
-        // Update informasi user
-        // ======================
+        // Update data user
         $dbUser->first_name   = $request->first_name;
         $dbUser->last_name    = $request->last_name;
         $dbUser->username     = $request->username;
@@ -83,10 +91,7 @@ class ProfileController extends Controller
         $dbUser->address      = $request->address;
         $dbUser->bio          = $request->bio;
 
-        // Simpan ke DB
         $dbUser->save();
-
-        // Update session supaya dashboard ikut berubah
         Session::put('user', $dbUser);
 
         return back()->with('success', 'Profile updated successfully!');

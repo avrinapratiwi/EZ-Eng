@@ -18,13 +18,13 @@
 
 
     <!-- inject:css -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/line-awesome.css">
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="css/bootstrap-select.min.css">
-    <link rel="stylesheet" href="css/fancybox.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/line-awesome.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/owl.theme.default.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap-select.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/fancybox.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <!-- end inject -->
 </head>
 <body>
@@ -64,7 +64,7 @@
                                                 <div class="shop-cart-btn">
                                                     <div class="avatar-xs">
                                                         <img class="rounded-full"
-                                                            src="{{ $user->photo ? asset('storage/'.$user->photo) : asset('images/user.png') }}"
+                                                            <img src="{{ $user->photo ? asset($user->photo) : asset('images/user.png') }}"
                                                             alt="Student thumbnail image"
                                                             style="width:100%; height:100%; object-fit:cover;">
                                                     </div>
@@ -213,7 +213,7 @@
                                 <div class="media media-card align-items-center">
                                     <div class="media-img media-img-lg mr-4 bg-gray" style="width:150px; height:150px; overflow:hidden;">
                                         <img class="mr-4"
-                                            src="{{ $user->photo ? asset('storage/'.$user->photo) : asset('images/user.png') }}"
+                                            src="{{ $user->photo ? asset($user->photo) : asset('images/user.png') }}"
                                             alt="User Photo"
                                             style="width:100%; height:100%; object-fit:cover;">
                                     </div>
