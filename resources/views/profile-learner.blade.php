@@ -184,7 +184,7 @@
                     <div class="media-img media--img media-img-md rounded-full"
                         style="border: 2px solid #d1d1d1; padding: 3px; width:80px; height:80px; overflow:hidden;">
                         <img class="rounded-full"
-                        src="{{ $user->photo ? asset($user->photo) : asset('images/user.png') }}"
+                        src="{{ $user->photo ? asset($user->photo) : asset('images/user.png') }}"
                         alt="Student thumbnail image"
                             style="width:100%; height:100%; object-fit:cover;">
                     </div>
