@@ -64,8 +64,7 @@
                                                 <div class="shop-cart-btn">
                                                     <div class="avatar-xs">
                                                         <img class="rounded-full"
-                                                            src="{{ $user->photo ? asset('storage/'.$user->photo) : asset('images/user.png') }}"
-                                                            alt="Student thumbnail image"
+                                                        src="{{ $user->photo ? asset($user->photo) : asset('images/user.png') }}"                                                            alt="Student thumbnail image"
                                                             style="width:100%; height:100%; object-fit:cover;">
                                                     </div>
                                                     <span class="dot-status bg-success"></span>
@@ -74,8 +73,7 @@
                                                     <li class="menu-heading-block d-flex align-items-center">
                                                         <a href="" class="avatar-sm flex-shrink-0 d-block">
                                                             <img class="rounded-full"
-                                                            src="{{ $user->photo ? asset('storage/'.$user->photo) : asset('images/user.png') }}"
-                                                            alt="Student thumbnail image"
+                                                            src="{{ $user->photo ? asset($user->photo) : asset('images/user.png') }}"                                                            alt="Student thumbnail image"
                                                             style="width:100%; height:100%; object-fit:cover;">
                                                         </a>
                                                         <div class="ml-2">
@@ -178,8 +176,7 @@
                     <div class="media-img media--img media-img-md rounded-full"
                         style="border: 2px solid #d1d1d1; padding: 3px; width:80px; height:80px; overflow:hidden;">
                         <img class="rounded-full"
-                            src="{{ $user->photo ? asset('storage/'.$user->photo) : asset('images/user.png') }}"
-                            alt="Student thumbnail image"
+                        src="{{ $user->photo ? asset($user->photo) : asset('images/user.png') }}"                            alt="Student thumbnail image"
                             style="width:100%; height:100%; object-fit:cover;">
                     </div>
                     <div class="media-body">
@@ -193,7 +190,6 @@
             <div class="dashboard-heading mb-5">
                 <h3 class="fs-22 font-weight-semi-bold">Message</h3>
             </div>
-        
             <div class="dashboard-message-wrapper d-flex my-4">
                 <div class="message-content flex-grow-1">
                     <div class="conversation-wrap">
@@ -202,7 +198,6 @@
                             <div class="message-time text-center mb-3">
                                 <span class="ribbon">{{ $date }}</span>
                             </div>
-                        
                             @foreach($msgs as $msg)
                                 @php
                                     $isMine = $msg->user_id === $user->id;
@@ -214,10 +209,9 @@
                                         {{-- AVATAR --}}
                                         <div class="avatar-sm flex-shrink-0 {{ $isMine ? 'ml-3' : 'mr-3' }}">
                                             <img class="rounded-full img-fluid"
-                                                src="{{ $msg->user->photo 
-                                                    ? asset('storage/'.$msg->user->photo) 
-                                                    : asset('images/user.png') }}"
-                                                style="width:40px;height:40px;">
+                                            src="{{ $msg->user->photo ? asset('storage/'.$msg->user->photo) : asset('images/user.png') }}"
+                                            style="width:40px;height:40px;">
+                                       
                                         </div>
                             
                                         <div class="media-body d-flex flex-column">

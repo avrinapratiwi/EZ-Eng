@@ -61,7 +61,7 @@
                                                 <div class="shop-cart-btn">
                                                     <div class="avatar-xs">
                                                         <img class="rounded-full"
-                                                        src="{{ $user->photo ? asset('storage/'.$user->photo) : asset('images/user.png') }}"
+                                                        src="{{ $user->photo ? asset($user->photo) : asset('images/user.png') }}"
                                                         alt="Student thumbnail image"
                                                         style="width:100%; height:100%; object-fit:cover;">                                                    </div>
                                                         <span class="dot-status bg-success"></span>
@@ -70,7 +70,7 @@
                                                     <li class="menu-heading-block d-flex align-items-center">
                                                         <a href="{{ route('profile-learner') }}" class="avatar-sm flex-shrink-0 d-block">
                                                             <img class="rounded-full"
-                                                            src="{{ $user->photo ? asset('storage/'.$user->photo) : asset('images/user.png') }}"
+                                                            src="{{ $user->photo ? asset($user->photo) : asset('images/user.png') }}"
                                                             alt="Student thumbnail image"
                                                             style="width:100%; height:100%; object-fit:cover;">                                                        </a>
                                                         <div class="ml-2">
@@ -180,7 +180,7 @@
                     <div class="media-img media--img media-img-md rounded-full"
                         style="border: 2px solid #d1d1d1; padding: 3px;">
                         <img class="rounded-full"
-                        src="{{ $user->photo ? asset('storage/'.$user->photo) : asset('images/user.png') }}"
+                        src="{{ $user->photo ? asset($user->photo) : asset('images/user.png') }}"
                         alt="Student thumbnail image"
                         style="width:100%; height:100%; object-fit:cover;">                    </div>
                     <div class="media-body">
@@ -300,7 +300,7 @@
                                         </td>
                                         <td style="width:50px;">
                                             <img src="{{ $item['learner']->photo ? asset('storage/'.$item['learner']->photo) : asset('images/user.png') }}"
-                                                 alt="Learner Photo"
+                                            alt="Learner Photo"
                                                  style="width:40px; height:40px; object-fit:cover; border-radius:50%;">
                                         </td>
                                         <td>{{ $item['learner']->first_name }} {{ $item['learner']->last_name }}</td>
