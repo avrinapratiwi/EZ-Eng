@@ -13,7 +13,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MessageController;
 use Illuminate\Support\Facades\Session;
 
-
+Route::get('/', [AuthController::class, 'showLogin']);
 Route::get('/signup', [AuthController::class, 'showSignup']);
 Route::post('/signup', [AuthController::class, 'signup']);
 Route::get('/verify/{token}', [AuthController::class, 'verify']);

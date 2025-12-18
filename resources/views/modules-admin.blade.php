@@ -378,7 +378,6 @@
                             <label>Order</label>
                             <input type="number" name="order" value="{{ $module->order }}" class="form-control" min="1" required>
                         </div>
-
                         <div class="form-group">
                             <label>Image</label>
                             <input type="file" name="image" class="form-control-file">
