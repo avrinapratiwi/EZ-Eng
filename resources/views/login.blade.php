@@ -67,6 +67,6 @@
 </div>
 
 <script src="js/sb-admin.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundlegit log --oneline -n 5.min.js"></script>
 </body>
 </html>
