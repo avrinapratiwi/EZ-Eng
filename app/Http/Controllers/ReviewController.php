@@ -10,14 +10,23 @@ use Barryvdh\DomPDF\Facade\Pdf;
 class ReviewController extends Controller
 {
     public function certificate($moduleId)
-    {
-        $user = Session::get('user');
-        $module = Module::findOrFail($moduleId);
+{
+    $user = Session::get('user');
 
-        $attempt = QuizAttempt::where('user_id', $user->id)->latest()->first();
+    $module = Module::findOrFail($moduleId);
 
-        return view('certificate', compact('user','module','attempt'));
-    }
+    $attempt = QuizAttempt::where('user_id', $user->id)
+        ->where('module_id', $moduleId)
+        ->orderByDesc('id')
+        ->first();
+
+    return view('certificate', [
+        'user' => $user,
+        'module' => $module,
+        'attempt' => $attempt
+    ]);
+}
+
 
 
 }
