@@ -55,7 +55,7 @@
                 </div>
             </div>            
 
-            <button type="submit" class="btn btn-primary w-100 mt-4">Log</button>
+            <button type="submit" class="btn btn-primary w-100 mt-4">Login</button>
 
             <div class="text-center mt-3">
                 <small>Don’t have an account? <a href="{{ url('/signup') }}" class="text-primary">Sign up now</a>
