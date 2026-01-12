@@ -244,7 +244,7 @@
                         
                             <td>
                                 @if($review['passed'])
-                                    <a href="{{ route('certificate.download', $review['module_id']) }}"
+                                    <a href=""
                                        class="btn btn-sm btn-success">
                                         <i class="fas fa-download"></i> Download
                                     </a>
