@@ -11,6 +11,7 @@ use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MessageController;
+use App\Http\Controllers\ReviewController;
 use Illuminate\Support\Facades\Session;
 
 Route::get('/', [AuthController::class, 'showLogin']);
@@ -81,3 +82,4 @@ Route::get('/learner/reviews', [ModuleController::class, 'showReviewsLearner'])-
 Route::get('/dashboard-learner', [DashboardController::class, 'index'])->name('dashboard-learner');
 Route::get('/messages', [MessageController::class, 'index'])->name('messages-learner');
 Route::post('/messages/send', [MessageController::class, 'sendMessage'])->name('messages.send');
+Route::get('/review/certificate/{module}', [ReviewController::class, 'certificate'])->name('review.certificate');

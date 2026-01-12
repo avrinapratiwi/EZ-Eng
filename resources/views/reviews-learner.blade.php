@@ -245,10 +245,11 @@
                         
                             <td>
                                 @if($review['passed'])
-                                    <a href=""
-                                       class="btn btn-sm btn-success">
-                                        <i class="fas fa-download"></i> Download
-                                    </a>
+                                <a href="{{ route('review.certificate', $review['module_id']) }}"
+                                    class="btn btn-sm btn-success">
+                                    <i class="fas fa-download"></i> Download
+                                </a>
+                             
                                 @else
                                     <span class="text-muted">Not Available</span>
                                 @endif

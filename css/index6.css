@@ -1,0 +1,157 @@
+body {
+    background-color: #f0f2f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.certificate-container {
+    background-color: #fff;
+    width: 900px;
+    height: 600px;
+    padding: 20px;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.certificate-border {
+    border: 3px solid #3b4754;
+    height: calc(100% - 10px);
+    width: calc(100% - 10px);
+    margin: 2px auto;
+    position: relative;
+    padding: 40px;
+    box-sizing: border-box;
+}
+
+/* Ribbon / Lencana Kanan Atas */
+.certificate-ribbon {
+    position: absolute;
+    top: -10px;
+    right: 50px;
+    background-color: #3b4754;
+    color: white;
+    width: 130px; /* Sedikit diperlebar agar teks tidak terlalu sesak */
+    padding: 20px 10px;
+    text-align: center;
+    font-size: 10px; /* Ukuran teks dikurangi agar pas */
+    font-weight: bold;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    z-index: 10;
+}
+
+.certificate-ribbon-text {
+    line-height: 1.4;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.certificate-ribbon-badge {
+    margin: 10px auto 0;
+    border: 2px dashed rgba(255, 255, 255, 0.5); /* Garis putus-putus lebih halus */
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.1); /* Background tipis agar logo menonjol */
+    overflow: hidden; /* Memastikan logo tidak keluar lingkaran */
+}
+.certificate-ribbon-badge img {
+    width: 80%; /* Logo mengisi 80% ruang lingkaran */
+    height: auto;
+    object-fit: contain; /* Menjaga rasio logo agar tidak gepeng */
+    filter: brightness(0) invert(1); /* Opsional: Membuat logo menjadi putih agar seragam dengan teks */
+}
+
+.certificate-signature-section {
+    text-align: left;
+    min-width: 200px;
+}
+
+.certificate-signature-image {
+    margin-bottom: -10px; /* Menarik tanda tangan lebih dekat ke garis nama */
+}
+
+.certificate-ribbon-number {
+    font-size: 24px;
+}
+
+/* Header */
+.certificate-header {
+    margin-bottom: 50px;
+}
+
+.certificate-logo {
+    font-size: 32px;
+    font-weight: bold;
+    color: #3b4754;
+}
+
+
+/* Body */
+.certificate-body {
+    margin-top: 40px;
+}
+
+.certificate-given-to {
+    font-size: 16px;
+    color: #666;
+}
+
+.certificate-recipient-name {
+    font-size: 36px;
+    font-weight: bold;
+    color: #00b8cc; /* Warna Toska */
+    margin: 10px 0;
+}
+
+.certificate-achievement {
+    font-size: 16px;
+    color: #666;
+}
+
+.certificate-class-name {
+    font-size: 22px;
+    font-weight: bold;
+    color: #00b8cc;
+    margin-top: 5px;
+}
+
+/* Footer */
+.certificate-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: 80px;
+}
+
+.certificate-signature-section {
+    text-align: left;
+}
+
+.certificate-date {
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.certificate-signer-name {
+    font-size: 18px;
+    font-weight: bold;
+    color: #3b4754;
+    border-top: 2px solid #3b4754; /* Garis pembatas lebih tebal */
+    padding-top: 5px;
+    display: inline-block;
+    min-width: 200px;
+}
+
+.certificate-signer-title {
+    font-size: 12px;
+    color: #777;
+}
+
