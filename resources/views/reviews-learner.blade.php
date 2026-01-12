@@ -210,37 +210,49 @@
                             </tr>
                         </thead>
                         <tbody>
-                        @foreach($reviews as $review)
-                            <tr>
-                                <th scope="row">
-                                    <ul class="generic-list-item">
-                                        <li>
-                                            @if($review['finished_at'])
-                                                <span class="badge {{ $review['passed'] ? 'bg-success' : 'bg-danger' }} text-white p-1">
-                                                    {{ $review['passed'] ? 'Passed' : 'Not Passed' }}
-                                                </span>
-                                                <span>{{ \Carbon\Carbon::parse($review['finished_at'])->format('d M Y H:i') }}</span>
-                                            @else
-                                                <span class="badge bg-warning text-dark p-1">Not Attempted</span>
-                                            @endif
-                                        </li>
-                                        <li>
-                                            @if($review['review_link'])
-                                                <a href="{{ $review['review_link'] }}" class="text-black">
-                                                    {{ $review['module_title'] }}
-                                                </a>
-                                            @else
-                                                <span class="text-black">{{ $review['module_title'] }}</span>
-                                            @endif
-                                        </li>
-                                    </ul>
-                                </th>
-                                <td>
-                                    <ul class="generic-list-item">
-                                        <li>{{ $review['score'] ?? '-' }}</li>
-                                    </ul>
-                                </td>
-                            </tr>
+                        @foreach($reviews as $review)     
+                        <tr>
+                            <th scope="row">
+                                <ul class="generic-list-item">
+                                    <li>
+                                        @if($review['finished_at'])
+                                            <span class="badge {{ $review['passed'] ? 'bg-success' : 'bg-danger' }} text-white p-1">
+                                                {{ $review['passed'] ? 'Passed' : 'Not Passed' }}
+                                            </span>
+                                            <span>{{ \Carbon\Carbon::parse($review['finished_at'])->format('d M Y H:i') }}</span>
+                                        @else
+                                            <span class="badge bg-warning text-dark p-1">Not Attempted</span>
+                                        @endif
+                                    </li>
+                                    <li>
+                                        @if($review['review_link'])
+                                            <a href="{{ $review['review_link'] }}" class="text-black">
+                                                {{ $review['module_title'] }}
+                                            </a>
+                                        @else
+                                            <span class="text-black">{{ $review['module_title'] }}</span>
+                                        @endif
+                                    </li>
+                                </ul>
+                            </th>
+                        
+                            <td>
+                                <ul class="generic-list-item">
+                                    <li>{{ $review['score'] ?? '-' }}</li>
+                                </ul>
+                            </td>
+                        
+                            <td>
+                                @if($review['passed'])
+                                    <a href="{{ route('certificate.download', $review['module_id']) }}"
+                                       class="btn btn-sm btn-success">
+                                        <i class="fas fa-download"></i> Download
+                                    </a>
+                                @else
+                                    <span class="text-muted">Not Available</span>
+                                @endif
+                            </td>
+                        </tr>      
                         @endforeach
                         </tbody>
                     </table>
