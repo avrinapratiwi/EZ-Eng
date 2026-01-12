@@ -207,6 +207,7 @@
                             <tr>
                                 <th scope="col">Course Title</th>
                                 <th scope="col">Score</th>
+                                <th scope="col">Cerificate</th>
                             </tr>
                         </thead>
                         <tbody>
