@@ -15,12 +15,12 @@
             <div class="certificate-ribbon">
                 <div class="certificate-ribbon-text">SERTIFIKAT KOMPETENSI KELULUSAN</div>
                 <div class="certificate-ribbon-badge">
-                    <img src="logo_ez-eng.png" alt="">
+                    <img src="img/logo_ez-eng.png" alt="">
                 </div>
             </div>
 
             <div class="certificate-header">
-                <div class="certificate-logo">EZ-Eng</div>
+                <div class="certificate-logo">Eazy English</div>
             </div>
 
             <div class="certificate-body">
@@ -34,7 +34,7 @@
                 <div class="certificate-signature-section">
                     <div class="certificate-date">29 Juli 2023</div>
                     <div class="certificate-signature-image">
-                        <img src="signature.png" alt="Tanda Tangan" style="width: 150px;">
+                        <img src="img/ttd.png" alt="Tanda Tangan" style="width: 150px;">
                     </div>
                     <div class="certificate-signer-name">Avrina Pratiwi</div>
                     <div class="certificate-signer-title">Project Creator<br>Eazy English</div>
