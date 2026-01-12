@@ -69,23 +69,8 @@
     <div class="container">
         <div class="mb-4 p-3 border rounded bg-light">
             <h4>Your Score: {{ $score }} / 100</h4>
-        
-            @if($passed)
-                <div class="alert alert-success mt-3">
-                    🎉 You have passed this course.
-                </div>
-        
-                <a href=""
-                class="btn btn-success mt-2">
-                    <i class="fa fa-download"></i> Download Certificate
-                </a>
-            @else
-                <div class="alert alert-danger mt-3">
-                    You have not passed yet. Please try again.
-                </div>
-            @endif
-        </div>
-           
+        </div>        
+
         @foreach($attempt->answers as $index => $answer)
         <div class="quiz-ans-content mb-4 p-3 border rounded">
             <p class="fs-18 font-weight-bold">
