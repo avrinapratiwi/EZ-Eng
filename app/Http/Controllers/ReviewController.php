@@ -19,17 +19,5 @@ class ReviewController extends Controller
         return view('certificate', compact('user','module','attempt'));
     }
 
-    public function downloadCertificate($moduleId)
-    {
-        $user = Session::get('user');
-        $module = Module::findOrFail($moduleId);
-    
-        $pdf = Pdf::loadView('certificate', [
-            'user'   => $user,
-            'module' => $module
-        ]);
-    
-        return $pdf->download('Certificate_'.$user->id.'_'.$module->id.'.pdf');
-    }
-    
+
 }

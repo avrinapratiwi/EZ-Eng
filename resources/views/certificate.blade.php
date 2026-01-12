@@ -20,7 +20,7 @@
         <div class="certificate-ribbon">
             <div class="certificate-ribbon-text">SERTIFIKAT KOMPETENSI KELULUSAN</div>
             <div class="certificate-ribbon-badge">
-                <img src="{{ public_path('img/logo_ez-eng.png') }}">
+                <img src="{{('img/logo_ez-eng.png') }}">
             </div>
         </div>
 
@@ -49,7 +49,7 @@
                 </div>
 
                 <div class="certificate-signature-image">
-                    <img src="{{ public_path('img/ttd.png') }}" style="width:150px;">
+                    <img src="{{('img/ttd.png') }}" style="width:150px;">
                 </div>
 
                 <div class="certificate-signer-name">Avrina Pratiwi</div>
