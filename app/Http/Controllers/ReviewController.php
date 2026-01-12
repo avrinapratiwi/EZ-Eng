@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\App;
 use App\Models\Module;
 use App\Models\QuizAttempt;
-use Barryvdh\DomPDF\Facade\Pdf;
-
+use Barryvdh\DomPDF\PDF;
 
 class ReviewController extends Controller
 {
@@ -15,19 +15,16 @@ class ReviewController extends Controller
     {
         $user = Session::get('user');
 
-        // Ambil module (untuk nama kelas di sertifikat)
         $module = Module::findOrFail($moduleId);
 
-        // Ambil attempt terakhir user (kalau ada, tapi tidak dipakai untuk validasi)
         $attempt = QuizAttempt::where('user_id', $user->id)
             ->latest()
             ->first();
 
-        // Langsung tampilkan sertifikat
         return view('certificate', [
-            'user' => $user,
+            'user'   => $user,
             'module' => $module,
-            'attempt' => $attempt
+            'attempt'=> $attempt
         ]);
     }
 
@@ -35,18 +32,15 @@ class ReviewController extends Controller
     {
         $user = Session::get('user');
         $module = Module::findOrFail($moduleId);
-    
-        $pdf = app('dompdf.wrapper');
+
+        /** @var PDF $pdf */
+        $pdf = App::make(PDF::class);
+
         $pdf->loadView('certificate', [
-            'user' => $user,
+            'user'   => $user,
             'module' => $module
         ]);
-        $pdf->setPaper('A4', 'landscape');
-    
-        $fileName = 'Certificate_'.$user->id.'_'.$module->id.'.pdf';
-    
-        return $pdf->download($fileName);
+
+        return $pdf->download('Certificate_'.$user->id.'_'.$module->id.'.pdf');
     }
-    
-    
 }
