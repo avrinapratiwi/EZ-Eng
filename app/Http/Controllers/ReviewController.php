@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Session;
 use App\Models\Module;
 use App\Models\QuizAttempt;
-use Barryvdh\DomPDF\PDF;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class ReviewController extends Controller
 {
@@ -19,16 +19,17 @@ class ReviewController extends Controller
         return view('certificate', compact('user','module','attempt'));
     }
 
-    public function downloadCertificate(PDF $pdf, $moduleId)
+    public function downloadCertificate($moduleId)
     {
         $user = Session::get('user');
         $module = Module::findOrFail($moduleId);
-
-        $pdf->loadView('certificate', [
+    
+        $pdf = Pdf::loadView('certificate', [
             'user'   => $user,
             'module' => $module
         ]);
-
+    
         return $pdf->download('Certificate_'.$user->id.'_'.$module->id.'.pdf');
     }
+    
 }
