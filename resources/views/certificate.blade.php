@@ -7,20 +7,13 @@
 </head>
 <body>
 
-<!-- Tombol download (tidak ikut masuk PDF) -->
-<div style="position:fixed; top:20px; right:20px; z-index:999;">
-    <a href="{{ route('certificate.download', $module->id) }}" class="btn btn-success">
-        Download Certificate
-    </a>
-</div>
-
 <div class="certificate-container">
     <div class="certificate-border">
 
         <div class="certificate-ribbon">
             <div class="certificate-ribbon-text">SERTIFIKAT KOMPETENSI KELULUSAN</div>
             <div class="certificate-ribbon-badge">
-                <img src="{{('img/logo_ez-eng.png') }}">
+                <img src="{{asset('img/logo_ez-eng.png') }}">
             </div>
         </div>
 
@@ -49,7 +42,7 @@
                 </div>
 
                 <div class="certificate-signature-image">
-                    <img src="{{('img/ttd.png') }}" style="width:150px;">
+                    <img src="{{asset('img/ttd.png') }}" style="width:150px;">
                 </div>
 
                 <div class="certificate-signer-name">Avrina Pratiwi</div>
