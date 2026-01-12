@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use App\Models\Module;
 use App\Models\QuizAttempt;
+use Barryvdh\DomPDF\Facade\Pdf;
+
 
 class ReviewController extends Controller
 {
@@ -28,4 +30,23 @@ class ReviewController extends Controller
             'attempt' => $attempt
         ]);
     }
+
+    public function downloadCertificate($moduleId)
+    {
+        $user = Session::get('user');
+        $module = Module::findOrFail($moduleId);
+    
+        $pdf = app('dompdf.wrapper');
+        $pdf->loadView('certificate', [
+            'user' => $user,
+            'module' => $module
+        ]);
+        $pdf->setPaper('A4', 'landscape');
+    
+        $fileName = 'Certificate_'.$user->id.'_'.$module->id.'.pdf';
+    
+        return $pdf->download($fileName);
+    }
+    
+    
 }
