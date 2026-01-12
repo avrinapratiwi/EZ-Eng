@@ -163,6 +163,7 @@ body {
 .certificate-score-label {
     font-size: 14px;
     color: #777;
+    font-weight: bolder;
     margin-bottom: 5px;
 }
 
