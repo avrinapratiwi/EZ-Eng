@@ -34,23 +34,35 @@
                 {{ $module->title }}
             </div>
         </div>
-
+        
         <div class="certificate-footer">
+
+            <!-- KIRI: tanda tangan -->
             <div class="certificate-signature-section">
                 <div class="certificate-date">
                     {{ now()->format('d F Y') }}
                 </div>
-
+        
                 <div class="certificate-signature-image">
                     <img src="{{asset('img/ttd.png') }}" style="width:150px;">
                 </div>
-
+        
                 <div class="certificate-signer-name">Avrina Pratiwi</div>
                 <div class="certificate-signer-title">
                     Project Creator<br>Eazy English
                 </div>
             </div>
+        
+            <!-- KANAN: score -->
+            <div class="certificate-score-section">
+                <div class="certificate-score-label">Final Score</div>
+                <div class="certificate-score-value">
+                    {{ $attempt->score ?? '-' }}
+                </div>
+            </div>
+        
         </div>
+        
 
     </div>
 </div>

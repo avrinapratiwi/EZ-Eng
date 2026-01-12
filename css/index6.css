@@ -155,3 +155,23 @@ body {
     color: #777;
 }
 
+.certificate-score-section {
+    text-align: right;
+    min-width: 200px;
+}
+
+.certificate-score-label {
+    font-size: 14px;
+    color: #777;
+    margin-bottom: 5px;
+}
+
+.certificate-score-value {
+    font-size: 36px;
+    font-weight: bold;
+    color: #00b8cc;
+    border-top: 2px solid #3b4754;
+    padding-top: 5px;
+    display: inline-block;
+    min-width: 150px;
+}
