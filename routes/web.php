@@ -22,7 +22,6 @@ Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
-Route::get('/dashboard-admin', function () {$user = Session::get('user');return view('dashboard-admin', compact('user'));})->name('dashboard-admin');
 Route::get('/dashboard-learner', function () {$user = Session::get('user');return view('dashboard-learner', compact('user'));})->name('dashboard-learner');
 
 Route::get('/profile-learner', function () {$user = Session::get('user');return view('profile-learner', compact('user'));})->name('profile-learner');

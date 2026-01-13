@@ -91,27 +91,19 @@ class DashboardController extends Controller
             'chartData'
         ));
     }
-    
     public function dashboardadmin()
     {
-        $user = Session::get('user');
-    
-        // Total learners (semua)
+        // Total semua learners
         $totalLearners = User::where('role', 'learner')->count();
-    
-        // Total learners AKTIF
-        $totalActiveLearners = User::where('role', 'learner')
-                                   ->where('status', 'AKTIF')
-                                   ->count();
-    
-        // Total mentor AKTIF
-        $totalActiveMentors = Mentor::where('status', 'AKTIF')->count();
-    
-        return view('dashboard-admin', compact(
-            'user',
+
+        // Total learners dengan status aktif
+        $totalLearnersAktif = User::where('role', 'learner')
+                                  ->where('status', 'aktif')
+                                  ->count();
+
+        return view('admin.dashboard', compact(
             'totalLearners',
-            'totalActiveLearners',
-            'totalActiveMentors'
+            'totalLearnersAktif'
         ));
     }
 
