@@ -44,7 +44,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item {{ request()->routeIs('dashboard-admin') ? 'active' : '' }}">
-                <a class="nav-link" href="{{ route('dashboard-admin') }}">
+                <a class="nav-link" href="{{ route('dashboard-admin-data') }}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span>
                 </a>
