@@ -225,8 +225,8 @@ use Illuminate\Support\Str;
                                             <th>Name</th>
                                             <th>Email</th>
                                             <th>Phone</th>
-                                            <th>Gender</th>
-                                            <th>Address</th>
+                                            <th>Jenis</th>
+                                            <th>Keterangan</th>
                                             <th>Status</th>
                                             <th>Action</th>
                                         </tr>
@@ -368,18 +368,26 @@ use Illuminate\Support\Str;
                         </div>
     
                         <div class="form-group">
-                            <label>Gender</label>
-                            <select name="gender" class="form-control" required>
-                                <option value="">-- Select Gender --</option>
-                                <option value="male">Male</option>
-                                <option value="female">Female</option>
-                            </select>
+                            <label>Jenis</label>
+                            <div class="d-flex mt-2">
+                                <div class="custom-control custom-radio mr-4">
+                                    <input type="radio" id="genderMaleAdd" name="gender" value="male" class="custom-control-input" required>
+                                    <label class="custom-control-label" for="genderMaleAdd">Ekonomi</label>
+                                </div>
+                        
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" id="genderFemaleAdd" name="gender" value="female" class="custom-control-input">
+                                    <label class="custom-control-label" for="genderFemaleAdd">Bisnis</label>
+                                </div>
+                            </div>
                         </div>
-    
+                        
+
                         <div class="form-group">
-                            <label>Address</label>
-                            <input type="text" name="address" class="form-control" required>
+                            <label>Keterangan</label>
+                            <textarea type="text" name="address" class="form-control" rows="3" required></textarea>
                         </div>
+                        
 
                     </div>
     
