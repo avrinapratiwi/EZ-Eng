@@ -206,19 +206,40 @@
                     <div class="row">
 
                         <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-success shadow h-100 py-2 bg-gradient-success text-white">
+                            <div class="card border-left-success shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-white text-uppercase mb-1">
+                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                                 Learners Aktif
                                             </div>
-                                            <div class="h5 mb-0 font-weight-bold text-white">
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">
                                                 {{ $totalActiveLearners }}
                                             </div>
                                         </div>
                                         <div class="col-auto">
-                                            <i class="fas fa-user-check fa-2x text-white-50"></i>
+                                            <i class="fas fa-user-check fa-2x text-success"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-info shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                                Mentor Aktif
+                                            </div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                                {{ $totalActiveMentors }}
+                                            </div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-chalkboard-teacher fa-2x text-info"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -226,24 +247,89 @@
                         </div>
                         
                         <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-info shadow h-100 py-2 bg-gradient-info text-white">
+                            <div class="card border-left-success shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-white text-uppercase mb-1">
-                                                Mentor Aktif
+                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                                Total Modules
                                             </div>
-                                            <div class="h5 mb-0 font-weight-bold text-white">
-                                                {{ $totalActiveMentors }}
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                                {{ $totalModules }}
                                             </div>
                                         </div>
                                         <div class="col-auto">
-                                            <i class="fas fa-chalkboard-teacher fa-2x text-white-50"></i>
+                                            <i class="fas fa-book fa-2x text-success"></i>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-secondary shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-secondary text-uppercase mb-1">
+                                                Total Lessons
+                                            </div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                                {{ $totalLessons }}
+                                            </div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-file-alt fa-2x text-secondary"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-warning shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                                Total Quizzes
+                                            </div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                                {{ $totalQuizzes }}
+                                            </div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-question-circle fa-2x text-warning"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-danger shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
+                                                Total Schedules
+                                            </div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                                {{ $totalSchedules }}
+                                            </div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-calendar-alt fa-2x text-danger"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+                        
+                        
+                        
                         
 
                     </div>
