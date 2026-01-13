@@ -193,7 +193,7 @@
             <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade show active" id="edit-profile" role="tabpanel" aria-labelledby="edit-profile-tab">
                     <div class="setting-body">
-                        <h3 class="fs-17 font-weight-semi-bold pb-4">Edit Profile</h3>
+                        <h3 class="fs-17 font-weight-semi-bold pb-4">Edit Biodata</h3>
                         
                         <!-- FORM UPDATE PROFILE -->
                         <form method="POST" 
