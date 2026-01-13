@@ -226,11 +226,14 @@ use Illuminate\Support\Str;
                                             <th>Email</th>
                                             <th>Phone</th>
                                             <th>Gender</th>
+                                            <th>Jenis</th>
+                                            <th>Keterangan</th>
                                             <th>Address</th>
                                             <th>Status</th>
                                             <th>Action</th>
                                         </tr>
-                                    </thead>                                    
+                                    </thead>
+                                                                       
                     
                                     <tbody>
                                         @php $no = 1; @endphp
@@ -242,7 +245,11 @@ use Illuminate\Support\Str;
                                             <td>{{ $mentor->email }}</td>
                                             <td>{{ $mentor->phone_number }}</td>
                                             <td>{{ ucfirst($mentor->gender) }}</td>
+                                            <td>{{ ucfirst($mentor->jenis) }}</td>
+                                            <td>{{ $mentor->keterangan }}</td>
                                             <td>{{ $mentor->address }}</td>
+                                            
+                                            
                                             <td>
                                                 @if($mentor->status == 'AKTIF')
                                                     <span class="badge badge-success">AKTIF</span>
@@ -466,6 +473,30 @@ use Illuminate\Support\Str;
                                 <option value="TIDAK AKTIF" {{ $mentor->status == 'TIDAK AKTIF' ? 'selected' : '' }}>TIDAK AKTIF</option>
                             </select>
                         </div>
+                        
+                        <div class="form-group">
+                            <label>Jenis</label>
+                            <div>
+                                <label class="mr-3">
+                                    <input type="radio" name="jenis" value="ekonomi"
+                                        {{ $mentor->jenis == 'ekonomi' ? 'checked' : '' }}>
+                                    Ekonomi
+                                </label>
+                        
+                                <label>
+                                    <input type="radio" name="jenis" value="bisnis"
+                                        {{ $mentor->jenis == 'bisnis' ? 'checked' : '' }}>
+                                    Bisnis
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Keterangan</label>
+                            <textarea name="keterangan" class="form-control" rows="3">{{ $mentor->keterangan }}</textarea>
+                        </div>
+                        
+                        
     
                     </div>
     

@@ -27,20 +27,25 @@ class UserController extends Controller
             'email'        => 'required|email|unique:mentors,email',
             'phone_number' => 'required|max:13|unique:mentors,phone_number',
             'gender'       => 'required',
+            'jenis'        => 'required|in:ekonomi,bisnis',
+            'keterangan'   => 'nullable|string',
             'address'      => 'required',
         ]);
-
+    
         Mentor::create([
             'name'         => $request->name,
             'email'        => $request->email,
             'phone_number' => $request->phone_number,
             'gender'       => $request->gender,
+            'jenis'        => $request->jenis,
+            'keterangan'   => $request->keterangan,
             'address'      => $request->address,
-            'status'       => 'TIDAK AKTIF', 
+            'status'       => 'TIDAK AKTIF',
         ]);
-
+    
         return redirect()->back()->with('success', 'Mentor successfully added!');
     }
+    
     
     public function updateMentor(Request $request, $id)
     {
@@ -51,6 +56,8 @@ class UserController extends Controller
             'email'        => 'required|email|unique:mentors,email,' . $mentor->id,
             'phone_number' => 'required|max:13|unique:mentors,phone_number,' . $mentor->id,
             'gender'       => 'required',
+            'jenis'        => 'required|in:ekonomi,bisnis',
+            'keterangan'   => 'nullable|string',
             'address'      => 'required',
             'status'       => 'required',
         ]);
@@ -60,12 +67,15 @@ class UserController extends Controller
             'email'        => $request->email,
             'phone_number' => $request->phone_number,
             'gender'       => $request->gender,
+            'jenis'        => $request->jenis,
+            'keterangan'   => $request->keterangan,
             'address'      => $request->address,
             'status'       => $request->status,
         ]);
     
         return redirect()->back()->with('success', 'Mentor successfully updated!');
     }
+    
     
     public function deleteMentor($id)
     {
