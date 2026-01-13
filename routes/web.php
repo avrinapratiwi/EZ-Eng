@@ -12,6 +12,7 @@ use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\AdminDashboardController;
 use Illuminate\Support\Facades\Session;
 
 Route::get('/', [AuthController::class, 'showLogin']);
@@ -22,6 +23,7 @@ Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
+Route::get('/dashboard-admin', function () {$user = Session::get('user');return view('dashboard-admin', compact('user'));})->name('dashboard-admin');
 Route::get('/dashboard-learner', function () {$user = Session::get('user');return view('dashboard-learner', compact('user'));})->name('dashboard-learner');
 
 Route::get('/profile-learner', function () {$user = Session::get('user');return view('profile-learner', compact('user'));})->name('profile-learner');
@@ -83,5 +85,5 @@ Route::get('/messages', [MessageController::class, 'index'])->name('messages-lea
 Route::post('/messages/send', [MessageController::class, 'sendMessage'])->name('messages.send');
 Route::get('/review/certificate/{module}', [ReviewController::class, 'certificate'])->name('review.certificate');
 Route::get('/certificate/{moduleId}/download', [ReviewController::class, 'downloadCertificate'])->name('certificate.download');
+Route::get('/dashboard-admin-data', [AdminDashboardController::class, 'data'])->name('dashboard-admin-data');
 
-Route::get('/admin/dashboard', [DashboardController::class, 'dashboardadmin'])->name('dashboard-admin');
