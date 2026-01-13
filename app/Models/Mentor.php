@@ -14,7 +14,10 @@ class Mentor extends Model
         'email',
         'phone_number',
         'gender',
+        'jenis',
         'address',
-        'status',
+        'keterangan',
+        'status'
     ];
+    
 }

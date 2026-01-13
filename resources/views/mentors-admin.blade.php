@@ -225,8 +225,8 @@ use Illuminate\Support\Str;
                                             <th>Name</th>
                                             <th>Email</th>
                                             <th>Phone</th>
-                                            <th>Jenis</th>
-                                            <th>Keterangan</th>
+                                            <th>Gender</th>
+                                            <th>Address</th>
                                             <th>Status</th>
                                             <th>Action</th>
                                         </tr>
@@ -368,26 +368,37 @@ use Illuminate\Support\Str;
                         </div>
     
                         <div class="form-group">
-                            <label>Jenis</label>
-                            <div class="d-flex mt-2">
-                                <div class="custom-control custom-radio mr-4">
-                                    <input type="radio" id="genderMaleAdd" name="gender" value="male" class="custom-control-input" required>
-                                    <label class="custom-control-label" for="genderMaleAdd">Ekonomi</label>
-                                </div>
+                            <label>Gender</label>
+                            <select name="gender" class="form-control">
+                                <option value="male" {{ $mentor->gender == 'male' ? 'selected' : '' }}>Male</option>
+                                <option value="female" {{ $mentor->gender == 'female' ? 'selected' : '' }}>Female</option>
+                            </select>
+                        </div>
                         
+                        <div class="form-group">
+                            <label>Address</label>
+                            <input type="text" name="address" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Jenis</label>
+                            <div class="d-flex">
+                                <div class="custom-control custom-radio mr-4">
+                                    <input type="radio" id="jenisEkonomi" name="jenis" value="ekonomi" class="custom-control-input" required>
+                                    <label class="custom-control-label" for="jenisEkonomi">Ekonomi</label>
+                                </div>
                                 <div class="custom-control custom-radio">
-                                    <input type="radio" id="genderFemaleAdd" name="gender" value="female" class="custom-control-input">
-                                    <label class="custom-control-label" for="genderFemaleAdd">Bisnis</label>
+                                    <input type="radio" id="jenisBisnis" name="jenis" value="bisnis" class="custom-control-input">
+                                    <label class="custom-control-label" for="jenisBisnis">Bisnis</label>
                                 </div>
                             </div>
                         </div>
                         
-
                         <div class="form-group">
                             <label>Keterangan</label>
-                            <textarea type="text" name="address" class="form-control" rows="3" required></textarea>
+                            <textarea name="keterangan" class="form-control" rows="3"></textarea>
                         </div>
-                        
+  
 
                     </div>
     
