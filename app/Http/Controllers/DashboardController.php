@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Module;
 use App\Models\Quiz;
+use App\Models\Mentor;
 use App\Models\Schedule;
 use App\Models\ModuleProgress;
 use App\Models\LessonProgress;
@@ -90,4 +91,28 @@ class DashboardController extends Controller
             'chartData'
         ));
     }
+    
+    public function dashboardadmin()
+    {
+        $user = Session::get('user');
+    
+        // Total learners (semua)
+        $totalLearners = User::where('role', 'learner')->count();
+    
+        // Total learners AKTIF
+        $totalActiveLearners = User::where('role', 'learner')
+                                   ->where('status', 'AKTIF')
+                                   ->count();
+    
+        // Total mentor AKTIF
+        $totalActiveMentors = Mentor::where('status', 'AKTIF')->count();
+    
+        return view('dashboard-admin', compact(
+            'user',
+            'totalLearners',
+            'totalActiveLearners',
+            'totalActiveMentors'
+        ));
+    }
+
 }

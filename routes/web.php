@@ -84,3 +84,5 @@ Route::get('/messages', [MessageController::class, 'index'])->name('messages-lea
 Route::post('/messages/send', [MessageController::class, 'sendMessage'])->name('messages.send');
 Route::get('/review/certificate/{module}', [ReviewController::class, 'certificate'])->name('review.certificate');
 Route::get('/certificate/{moduleId}/download', [ReviewController::class, 'downloadCertificate'])->name('certificate.download');
+
+Route::get('/admin/dashboard', [DashboardController::class, 'dashboardadmin'])->name('dashboard-admin');
